@@ -10,48 +10,21 @@ namespace PadraoObserver
     {
         static void Main(string[] args)
         {
-        }
-    }
+            var observerRed = new ObserverRed();
+            var observerBlue = new ObserverBlue();
+            var subject = new SubjectBase();
+            subject.Attach(observerRed);
+            subject.Attach(observerBlue);
+            Console.WriteLine("Qual o seu nome?");
+            string nome = Console.ReadLine();
+            while (!string.IsNullOrEmpty(nome))
+            {
+                subject.Notify(nome);
+                Console.WriteLine("Qual o seu nome?");
+                nome = Console.ReadLine();
+            
+            }
 
-    interface IObserver {
-        void Update();
-    }
-    interface ISubject {
-        void Attach( IObserver observer);
-        void Dettach( IObserver observer);
-        void DettachAll();
-        void Notify();
-
-    }
-
-    class ObserverBase : IObserver
-    {
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    class SubjectBase : ISubject
-    {
-        public void Attach(IObserver observer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dettach(IObserver observer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DettachAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Notify()
-        {
-            throw new NotImplementedException();
         }
     }
 }
